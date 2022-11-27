@@ -1,32 +1,16 @@
+import { useState } from 'react';
+
 import Todo from './components/Todo';
 import NewTodo from './components/NewTodo';
 
 const App = () => {
-
-  var todoList = [];
-
-
-  const todos = [
-    {
-      id: 't1',
-      title: 'Learn React',
-    },
-    {
-      id: 't2',
-      title: 'Master React',
-    },
-    {
-      id: 't3',
-      title: 'Explore the course',
-    },
-  ];
+  const [ todos, setTodos ] = useState([]);
 
   function newTodoHandler(todoData) {
 
-    var id = todoList.length.toString()
+    var id = todos.length.toString()
 
-    todoList.push(new TodoData(id, todoData.title));
-    console.log(todoList);
+    setTodos(current => [...current, new TodoData(id, todoData.title)]);
   }
 
   function TodoData(id, title) {
@@ -41,10 +25,6 @@ const App = () => {
       <NewTodo onNewTodo={newTodoHandler} />
 
       { todos.map((todo) => {
-        return <Todo key={todo.id} text={todo.title} />
-      }) }
-
-      { todoList.map((todo) => {
         return <Todo key={todo.id} text={todo.title} />
       }) }
 
