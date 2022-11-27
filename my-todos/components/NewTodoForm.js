@@ -21,8 +21,7 @@ function NewTodoForm(props) {
             title: enteredTitle,
         };
     
-        console.log(todoData);
-        props.onConfirm();
+        props.onNewTodo(todoData);
     }
       
 

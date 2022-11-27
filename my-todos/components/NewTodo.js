@@ -5,24 +5,30 @@ import Backdrop from './Backdrop';
 
 
 
-function NewTodo() {
+function NewTodo(props) {
     const [ modalIsOpen, setModalIsOpen ] = useState(false);
 
-    function newHandler() {
+    function openFormHandler(todoData) {
         setModalIsOpen(true);
     }
 
-    function closeModalHandler() {
+    function closeFormHandler() {
+        setModalIsOpen(false);
+    }
+
+    function newTodoHandler(todoData) {
+        props.onNewTodo(todoData)
         setModalIsOpen(false);
     }
 
     return (
     <div>
-        <div className='card' onClick={newHandler}>
+        <div className='card' onClick={openFormHandler}>
             <h1 style={{textAlign: "center"}}>+</h1>
         </div>
-        {modalIsOpen && <NewTodoForm onCancel={closeModalHandler} onConfirm={closeModalHandler} />}
-        {modalIsOpen && <Backdrop onCancel={closeModalHandler} />}
+        {modalIsOpen && <NewTodoForm onCancel={closeFormHandler} onNewTodo={newTodoHandler} />}
+        {modalIsOpen && <Backdrop onCancel={closeFormHandler} />}
+        <p />
     </div>
     );
 }

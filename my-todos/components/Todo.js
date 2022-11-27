@@ -16,6 +16,7 @@ function Todo(props) {
     }
 
     return (
+      <div>
       <div className='card'>
         <h2>{props.text}</h2>
         <div className='actions'>
@@ -24,7 +25,8 @@ function Todo(props) {
         {modalIsOpen && <DeleteModal onCancel={closeModalHandler} onConfirm={closeModalHandler} />}
         {modalIsOpen && <Backdrop onCancel={closeModalHandler} />}
       </div>
-
+      <p />
+      </div>
     );
 }
 
