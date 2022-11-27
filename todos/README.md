@@ -1,3 +1,5 @@
+# todos
+
 A project to help learn react adapted from [React Crash Course for Beginners](https://youtube.com/watch?v=Dorf8i6lCuk). This projects manages a set of todo tasks.
 
 ## setup
