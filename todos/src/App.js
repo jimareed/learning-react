@@ -3,15 +3,6 @@ import NewTodo from './components/NewTodo';
 
 const App = () => {
 
-  function newTodoHandler(todoData) {
-    console.log(todoData);
-  }
-
-//  function TodoData(id, title) {
-//    this.id = id;
-//    this.title = title;
-//  }
-
   var todoList = [];
 
 
@@ -29,6 +20,19 @@ const App = () => {
       title: 'Explore the course',
     },
   ];
+
+  function newTodoHandler(todoData) {
+
+    var id = todoList.length.toString()
+
+    todoList.push(new TodoData(id, todoData.title));
+    console.log(todoList);
+  }
+
+  function TodoData(id, title) {
+    this.id = id;
+    this.title = title;
+  }
 
   return (
     <div>
