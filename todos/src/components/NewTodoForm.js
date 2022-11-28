@@ -17,7 +17,7 @@ function NewTodoForm(props) {
         const enteredTitle = titleInputRef.current.value;
     
         const todoData = {
-            id: "1",
+            id: "",
             title: enteredTitle,
         };
     
