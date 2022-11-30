@@ -5,12 +5,18 @@ import NewTodo from './components/NewTodo';
 
 const App = () => {
   const [ todos, setTodos ] = useState([]);
+  const [ nextId, setNextId ] = useState(0);
 
   function newTodoHandler(todoData) {
 
-    var id = todos.length.toString()
+    var id = nextId.toString()
 
+    setNextId(nextId+1);
     setTodos(current => [...current, new TodoData(id, todoData.title)]);
+  }
+
+  function deleteTodoHandler(todoId) {
+    setTodos((current) => current.filter((todo) =>todo.id !== todoId))
   }
 
   function TodoData(id, title) {
@@ -25,7 +31,7 @@ const App = () => {
       <NewTodo onNewTodo={newTodoHandler} />
 
       { todos.map((todo) => {
-        return <Todo key={todo.id} text={todo.title} />
+        return <Todo key={todo.id} todo={todo} onDeleteTodo={deleteTodoHandler} />
       }) }
 
     </div>
